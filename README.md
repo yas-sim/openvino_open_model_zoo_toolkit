@@ -64,6 +64,7 @@ img = cv2.imread('resources/car.png')
 res = model.run(img)
 print(res)
 # Example: res = [[479, 'car wheel', 0.5016654], [817, 'sports car, sport car', 0.31316656], [436, 'beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon', 0.06171181]]
+# res spec : [ [ classId, classLabel, probability ], ...]
 ```
 
 ### Code example - Object detection
@@ -79,6 +80,7 @@ img = cv2.imread('resources/car_1.bmp')
 res = model.run(img)
 print(res)
 # Example: res = [[1, 'person', 0.9291767, (42, 2), (759, 714)]]
+# res spec : [ [ classId, classLabel, probability, upper-right, bottom-left], ...]
 
 for obj in res:
     cv2.rectangle(img, obj[3], obj[4], color=(255,0,0), thickness=2)
@@ -99,6 +101,8 @@ model = omz.textDetector()
 img = cv2.imread('resources/textdet.jpg')
 rects, imgs = model.run(img)
 print(rects)
+# res spec : rects = [ ((x0,y0), (x1,y1), angle), ... ] # == list of cv2.RotatedRect()
+#            imgs = cropped OpenCV images of detected texts
 
 for rect in rects:
     box = cv2.boxPoints(rect).astype(np.int32)     # Obtain rotated rectangle
@@ -120,6 +124,9 @@ model = omz.humanPoseEstimator()
 img = cv2.imread('resources/people.jpg')
 res = model.run(img)
 print(res)
+# res spec : res = [ person0, person1, ... ]
+#            person = [ point * 18, + score ]    # 3*18+1 = 55 elements
+#            point  = scaled_x, scaled_y, conf
 
 omztk.renderPeople(img, res)
 cv2.imshow('result', img)
@@ -147,6 +154,7 @@ detected_faces = facedet.run(img)
 for face in detected_faces:
     face_img = omztk.ocv_crop(img, face[3], face[4], scale=1.3)  # Crop detected face (x1.3 wider)
     landmarks         = lm.run(face_img)                         # Estimate facial landmark points
+    # Example: landmarks = [(112, 218), (245, 192), (185, 281), (138, 369), (254, 343)]
 
     face_lmk_img = face_img.copy()                               # Copy cropped face image to draw markers on it
     for lmk in landmarks:
@@ -155,13 +163,16 @@ for face in detected_faces:
     cv2.waitKey(2 * 1000)  # 2 sec                               # Display cropped face image with landmarks
 
     yaw, pitch, roll = hp.run(face_img)                          # Estimate head pose (=head rotation)
+    # Example: yaw, pitch, roll = -2.6668947, 22.881355, -5.5514703
     face_rot_img = omztk.ocv_rotate(face_img, roll)              # Correct roll to be upright the face
 
     age, gender, prob = agegen.run(face_rot_img)                 # Estimate age and gender
+    print(age,gender,prob)
+    # Example: age, gender, prob = 23, female, 0.8204694
     emotion           = emo.run(face_rot_img)                    # Estimate emotion
+    # Example: emotion = 'smile'
 
     print(age, gender, emotion, landmarks)
-    # Example: 23 female neutral [(112, 218), (245, 192), (185, 281), (138, 369), (254, 343)]
 
     cv2.imshow('cropped and rotated face', face_rot_img)
     cv2.waitKey(2 * 1000)  # 2 sec
