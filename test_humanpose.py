@@ -8,7 +8,7 @@ model.setDevice('MYRIAD')
 
 img = cv2.imread('resources/people.jpg')
 res = model.run(img)
-print('*', res)
+print(res)
 
 omztk.renderPeople(img, res)
 cv2.imshow('result', img)

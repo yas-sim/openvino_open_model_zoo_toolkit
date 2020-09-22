@@ -96,10 +96,6 @@ import open_model_zoo_toolkit as omztk
 omz = omztk.openvino_omz()
 model = omz.textDetector()
 
-cap = cv2.VideoCapture(0)
-
-key = 0
-
 img = cv2.imread('resources/textdet.jpg')
 rects, imgs = model.run(img)
 print(rects)
@@ -123,7 +119,7 @@ model = omz.humanPoseEstimator()
 
 img = cv2.imread('resources/people.jpg')
 res = model.run(img)
-print('*', res)
+print(res)
 
 omztk.renderPeople(img, res)
 cv2.imshow('result', img)
