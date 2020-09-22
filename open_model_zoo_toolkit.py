@@ -687,7 +687,7 @@ class openvino_omz:
 
     # ------------------------------------------------------
 
-    def imageClassificator(self, omzmodel=None):
+    def imageClassifier(self, omzmodel=None):
         return self.modelObjectFactory('image_classification', omzmodel)
 
     def objectDetector(self, omzmodel=None):

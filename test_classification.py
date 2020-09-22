@@ -2,7 +2,7 @@ import cv2
 import open_model_zoo_toolkit as omztk
 
 omz = omztk.openvino_omz()
-model = omz.imageClassificator()
+model = omz.imageClassifier()
 
 img = cv2.imread('resources/car.png')
 res = model.run(img)

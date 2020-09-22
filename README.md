@@ -13,7 +13,7 @@
 
 ## Description:
 This toolkit (library) provides following functions or capabilities:
-1. Automatic OMZ model downloading - 自動モデルダウンロード 
+1. Automatic OMZ model downloading - 自動モデルダウンロード   
   The library will download required OMZ IR models automatically if it's not existing on the computer.  
 2. Preprocess and postprocess - 推論プリ/ポストプロセス  
   The library does required preprocess and postprocess for inferencing. User just need to provide an OpenCV image and get the parsed inference result.  
@@ -57,7 +57,7 @@ import cv2
 import open_model_zoo_toolkit as omztk
 
 omz = omztk.openvino_omz()
-model = omz.imageClassificator()
+model = omz.imageClassifier()
 #model.setDevice('MYRIAD')  # You can change inference device. Default='CPU'
 
 img = cv2.imread('resources/car.png')
