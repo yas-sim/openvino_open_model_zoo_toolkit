@@ -4,7 +4,7 @@ import open_model_zoo_toolkit as omztk
 omz = omztk.openvino_omz()
 model = omz.humanPoseEstimator()
 
-model.setDevice('MYRIAD')
+#model.setDevice('MYRIAD')
 
 img = cv2.imread('resources/people.jpg')
 res = model.run(img)

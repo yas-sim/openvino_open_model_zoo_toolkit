@@ -188,6 +188,6 @@ cv2.waitKey(3 * 1000)      # 3 sec
 
 ### How to build `pose_extractor` for human_pose_estimation (Ubuntu 18.04)
 1. Open a terminal
-2. Run `build-poseextractor.sh`
-3. You'll have `libposeextractor.so` in the current directory.
-
+2. Run `build-poseextractor.sh`  
+  You might need to give permission to run -> `chmod +x build-poseextractor.sh`
+3. You'll have `pose_extractor.so` in the current directory.
