@@ -1,8 +1,8 @@
-# OpenVINO Open Model Zoo toolkit
+# [OpenVINO](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) - Open Model Zoo toolkit
 ## Overview:
- This is a wrapper library for [Open Model Zoo (OMZ)](https://github.com/openvinotoolkit/open_model_zoo) for Intel distribution of OpenVINO toolkit. User can use OMZ models without having deep knowledge of OpenVINO or deep-learning. **This library hides all the mess behind the scene.**  
+ This is a wrapper library for [Open Model Zoo (OMZ)](https://github.com/openvinotoolkit/open_model_zoo) for [Intel distribution of OpenVINO toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html). User can use OMZ models without having deep knowledge of OpenVINO or deep-learning. **This library hides all the mess behind the scene.**  
  User can utilize OpenVINO performance and OMZ algorithms (models) by simple funciton calls.  
- これはIntel distribution of OpenVINO toolkit用のモデルライブラリ、[Open Model Zoo (OMZ)](https://github.com/openvinotoolkit/open_model_zoo)を簡単に利用できるようにするためのラッパーライブラリです。ユーザーはディープラーニングやOpenVINOの知識が無くてもディープラーニングを使った処理を実行可能になります。  
+ これは[Intel distribution of OpenVINO toolkit](https://www.intel.co.jp/content/www/jp/ja/internet-of-things/openvino-toolkit.html)用のモデルライブラリ、[Open Model Zoo (OMZ)](https://github.com/openvinotoolkit/open_model_zoo)を簡単に利用できるようにするためのラッパーライブラリです。ユーザーはディープラーニングやOpenVINOの知識が無くてもディープラーニングを使った処理を実行可能になります。  
  ユーザーは普通に関数を呼び出すだけでOpenVINOのパフォーマンスとOMZのアルゴリズムを利用可能です。  
 
 ## IMPORTANT NOTICE  
