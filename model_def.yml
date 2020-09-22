@@ -1,0 +1,178 @@
+# omz.yaml
+# OpenVINO Open Model Zoo - Model definition file for omz.py
+
+# ---------------------- Image Classification
+
+- name: googlenet-v1
+  label: labels_imagenet.txt
+  object: omz_image_classification
+  postprocess: 
+    num_results: 3
+- name: googlenet-v2
+  label: labels_imagenet.txt
+  object: omz_image_classification
+  postprocess: 
+    num_results: 3
+- name: googlenet-v3
+  label: labels_imagenet.txt
+  object: omz_image_classification
+  postprocess: 
+    num_results: 3
+- name: resnet-50
+  label: labels_imagenet.txt
+  object: omz_image_classification
+  postprocess:
+    num_results: 3
+
+# ---------------------- Object Detection
+
+- name: ssd_mobilenet_v1_coco
+  label: labels_coco.txt
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: ssd_mobilenet_v2_coco
+  label: labels_coco.txt
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: ssd_resnet50_v1_fpn_coco
+  label: labels_coco.txt
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+
+- name: yolo-v3-tf
+  label: labels_voc.txt
+  object: omz_object_detection_yolo_v3
+  postprocess:
+    threshold: 0.7
+    iou: 0.8
+
+# ---------------------- Face Detection
+
+- name: face-detection-0100
+  object: omz_object_detection_ssd
+  description: Face detector based on MobileNetV2 as a backbone with a multiple SSD head for indoor and outdoor scenes shot by a front-facing camera. During the training of this model, training images were resized to 256x256.
+  postprocess:
+    threshold: 0.7
+- name: face-detection-0102
+  description: Face detector based on MobileNetV2 as a backbone with a multiple SSD head for indoor and outdoor scenes shot by a front-facing camera. During the training of this model, training images were resized to 384x384.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: face-detection-0104
+  description: Face detector based on MobileNetV2 as a backbone with a multiple SSD head for indoor and outdoor scenes shot by a front-facing camera. During the training of this model, training images were resized to 448x448.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+
+
+# ---------------------- Person Detection
+
+- name: person-detection-retail-0002
+  description:  This is a pedestrian detector based on backbone with hyper-feature + R-FCN for the Retail scenario.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: person-detection-retail-0013
+  description:  This is a pedestrian detector for the Retail scenario. It is based on MobileNetV2-like backbone that includes depth-wise convolutions to reduce the amount of computation for the 3x3 convolution block. The single SSD head from 1/16 scale feature map has 12 clustered prior boxes.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: person-detection-retail-0100
+  description:  This is a person detector that is based on MobileNetV2 backbone with two SSD heads from 1/16 and 1/8 scale feature maps and clustered prior boxes for 256x256 resolution.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: person-detection-retail-0101
+  description:  This is a person detector that is based on MobileNetV2 backbone with two SSD heads from 1/16 and 1/8 scale feature maps and clustered prior boxes for 384x384 resolution.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: person-detection-retail-0102
+  description:  This is a person detector that is based on MobileNetV2 backbone with two SSD heads from 1/16 and 1/8 scale feature maps and clustered prior boxes for 512x512 resolution.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: pedestrian-detection-adas-0002
+  description:  Pedestrian detection network based on SSD framework with tuned MobileNet v1 as a feature extractor.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: pedestrian-detection-adas-binary-0001
+  description: Pedestrian detection network based on SSD framework with tuned MobileNet v1 as a feature extractor. Some layers of MobileNet v1 are binary and use I1 arithm
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+- name: pedestrian-and-vehicle-detector-adas-0001
+  description: Pedestrian and vehicle detection network based on MobileNet v1.0 + SSD.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+
+# ---------------------- Vehicle Detection
+
+- name: vehicle-detection-adas-0002
+  description: This is a vehicle detection network based on an SSD framework with tuned MobileNet v1 as a feature extractor.
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+
+- name: vehicle-detection-adas-binary-0001
+  description: This is a vehicle detection network based on an SSD framework with tuned MobileNet v1 as a feature extractor and using binary layer for speedup. This detecector was created by binarization the vehicle-detection-adas-0002
+  object: omz_object_detection_ssd
+  postprocess:
+    threshold: 0.7
+
+# ---------------------- Age Gender Estimation
+
+- name: age-gender-recognition-retail-0013
+  description: Fully convolutional network for simultaneous Age/Gender recognition. The network is able to recognize age of people in [18, 75] years old range, it is not applicable for children since their faces were not in the training set.
+  object: omz_age_gender_estimation
+  postprocess:
+    dummy: 0
+
+# ---------------------- Head pose estimation
+
+- name: head-pose-estimation-adas-0001
+  description: Head pose estimation network based on simple, handmade CNN architecture. Angle regression layers are convolutions + ReLU + batch norm + fully connected with one output.
+  object: omz_head_pose_estimation
+  postprocess:
+    dummy: 0
+
+
+- name: emotions-recognition-retail-0003
+  description: Fully convolutional network for recognition of five emotions ('neutral', 'happy', 'sad', 'surprise', 'anger').
+  object: omz_emotion_estimation
+  postprocess:
+    dummy: 0
+
+# ---------------------- Face landmark regression
+
+- name: landmarks-regression-retail-0009
+  description: This is a lightweight landmarks regressor for the Smart Classroom scenario. It has a classic convolutional design; stacked 3x3 convolutions, batch normalizations, PReLU activations, and poolings. Final regression is done by the global depthwise pooling head and FullyConnected layers. The model predicts five facial landmarks; two eyes, nose, and two lip corners.
+  object: omz_face_landmarks_regression
+  postprocess:
+    dummy: 0
+- name: facial-landmarks-35-adas-0002
+  description: This is a custom-architecture convolutional neural network for 35 facial landmarks estimation.
+  object: omz_face_landmarks_regression
+  postprocess:
+    dummy: 0
+
+# ---------------------- Text detection
+
+- name: text-detection-0003
+  description: Text detector based on PixelLink architecture with MobileNetV2-like as a backbone for indoor/outdoor scenes.
+  object: omz_text_detection
+  postprocess:
+    dummy: 0
+
+# ---------------------- Human pose estimation
+
+- name: human-pose-estimation-0001
+  description: This is a multi-person 2D pose estimation network (based on the OpenPose approach) with tuned MobileNet v1 as a feature extractor. For every person in an image, the network detects a human pose; a body skeleton consisting of keypoints and connections between them. The pose may contain up to 18 keypoints; ears, eyes, nose, neck, shoulders, elbows, wrists, hips, knees, and ankles.
+  object: omz_human_pose_estimation
+  postprocess:
+    dummy: 0

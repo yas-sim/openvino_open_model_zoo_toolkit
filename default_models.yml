@@ -1,0 +1,29 @@
+# default IR model definition for omz.py
+# model name = OpenVINO Open Model Zoo model name.
+
+- task: image_classification
+  model: googlenet-v1
+
+- task: object_detection
+  model: ssd_mobilenet_v1_coco
+
+- task: face_detection
+  model: face-detection-0100
+
+- task: age_gender
+  model: age-gender-recognition-retail-0013
+
+- task: head_pose
+  model: head-pose-estimation-adas-0001
+
+- task: emotion
+  model: emotions-recognition-retail-0003
+
+- task: face_landmarks
+  model: landmarks-regression-retail-0009
+
+- task: text_detect
+  model: text-detection-0003
+
+- task: human_pose
+  model: human-pose-estimation-0001
