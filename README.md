@@ -19,7 +19,7 @@ This toolkit (library) provides following functions or capabilities:
   The library does required preprocess and postprocess for inferencing. User just need to provide an OpenCV image and get the parsed inference result.  
 
 ## Prerequisites
-Intel OpenVINO toolkit 2020.4.
+Intel OpenVINO toolkit 2021.3.
 
 ## Supported models
 Supported models are defined in `model_def.yml`.  
@@ -114,6 +114,9 @@ key = cv2.waitKey(3 * 1000)     # 3 sec
 ![sample](resources/textdet_res.jpg)
 
 ### Code example - Human pose estimation
+
+*Note:* Human pose estimation requires a Python module to decode the inference result (pose extraction). The module comes with OpenVINO human_pose_estimation_demo_3d Python demo program and you need to build the pose extraction module by your self (pose_extractor.pyd). Run build_demo script with "-DENABLE_PYTHON=YES" option to build the module.
+
 ```python
 import cv2
 import open_model_zoo_toolkit as omztk

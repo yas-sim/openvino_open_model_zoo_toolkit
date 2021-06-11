@@ -51,17 +51,17 @@
 
 # ---------------------- Face Detection
 
-- name: face-detection-0100
+- name: face-detection-0200
   object: omz_object_detection_ssd
   description: Face detector based on MobileNetV2 as a backbone with a multiple SSD head for indoor and outdoor scenes shot by a front-facing camera. During the training of this model, training images were resized to 256x256.
   postprocess:
     threshold: 0.7
-- name: face-detection-0102
+- name: face-detection-0202
   description: Face detector based on MobileNetV2 as a backbone with a multiple SSD head for indoor and outdoor scenes shot by a front-facing camera. During the training of this model, training images were resized to 384x384.
   object: omz_object_detection_ssd
   postprocess:
     threshold: 0.7
-- name: face-detection-0104
+- name: face-detection-0204
   description: Face detector based on MobileNetV2 as a backbone with a multiple SSD head for indoor and outdoor scenes shot by a front-facing camera. During the training of this model, training images were resized to 448x448.
   object: omz_object_detection_ssd
   postprocess:

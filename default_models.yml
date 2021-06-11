@@ -8,7 +8,7 @@
   model: ssd_mobilenet_v1_coco
 
 - task: face_detection
-  model: face-detection-0100
+  model: face-detection-0200
 
 - task: age_gender
   model: age-gender-recognition-retail-0013

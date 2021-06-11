@@ -29,6 +29,7 @@ class ov_model:
         self.iblob = []
         self.oblob = []
         self.modelDir = '.'
+        self.modelFile = None
         self.setDevice(device)
         self.postprocess_params = kwargs['kwargs']
         self.labels = None
@@ -119,6 +120,9 @@ class ov_model:
                 self.net    = self.ie.read_network(modelfile+'.xml', modelfile+'.bin')
                 self.exenet = self.ie.load_network(self.net, self.device, num_requests=4)
                 self.getInterfaceInfo()
+                self.modelFile = modelFile
+                return
+        print('Failed to load a model :', modelFile)
 
     def inference(self, ocvimg):
         """
@@ -482,7 +486,6 @@ class omz_object_detection_yolo_v3(ov_model):
                         params = params, 
                         threshold = threshold )
         objs = self.bbox_NMS(objs, iou_threshold = iou_threshold)
-        print(objs)
         return objs
         # params = {'anchors': '10,13,16,30,33,23,30,61,62,45,59,119,116,90,156,198,373,326', 'axis': '1', 'classes': '80', 'coords': '4', 'do_softmax': '0', 'end_axis': '3', 'mask': '6,7,8', 'num': '9', 'originalLayersNames': 'conv2d_58/Conv2D/YoloRegion'}
 
@@ -539,6 +542,8 @@ try:
     human_pose_available = True
     from pose_extractor import extract_poses
 except ModuleNotFoundError:
+    print('ERROR: extract_pose module is required to postprocess the human-pose-estimation model. It comes with OpenVINO human_pose_estimation_demo_3D demo program and you need to build the module, and then place the module to the current directory.')
+    print('Run the OpenVINO demo build script with \'-DENABLE_PYTHON=YES\' option to build the human pose estimation Python module.')
     human_pose_available = False
 
 class omz_human_pose_estimation(ov_model):
@@ -763,6 +768,9 @@ def renderPeople(img, people, scaleFactor=4, threshold=0.5):
     Return:  
       None
     """
+    if people is None:
+        return
+
     limbIds = [ [ 1,  2], [ 1,  5], [ 2,  3], [ 3,  4], [ 5,  6], 
                 [ 6,  7], [ 1,  8], [ 8,  9], [ 9, 10], [ 1, 11],
                 [11, 12], [12, 13], [ 1,  0], [ 0, 14], [14, 16], 
